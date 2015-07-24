@@ -1,0 +1,118 @@
+<head>
+  <title>Chat Bop</title>
+  <link href='http://fonts.googleapis.com/css?family=Oswald|Roboto+Slab' rel='stylesheet' type='text/css'>
+  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script>
+    $(document).ready(function(){$(".welcome").hide().fadeIn(1200);
+                                 $(".pleaseSignIn").hide().delay(1200).fadeIn(1200);
+                                 });
+  </script>
+</head>
+
+<body>
+  <div class="header">
+    {{#if currentUser}}
+      <div class="pageTitle" title="The Best Chat Site on the Web">CHAT BOP</div>
+    {{/if}}
+    <div class="login">{{> loginButtons align="right"}}</div>
+  </div>
+  {{#if currentUser}}
+    <div class="chatListColumn">
+      {{> chatListColumn}}
+    </div>
+    <div class="mainColumn">
+      {{#if chatOpen}}
+        <div class="chatLog">
+          {{> chatLog}}
+        </div>
+        <div class="inputArea">
+          {{> inputArea}}
+        </div>
+      {{else}}
+        <div class="loginGreeting">
+          <p class="hiUsername">Hi, {{currentUser.username}}.</p>
+          <p class="belowHiText">You can open a chat or add new chats on the left.</p>
+        </div>
+      {{/if}}
+    </div>
+  {{else}}
+    <div class="welcomeText" title="Sign in on the top right.">
+      <span class="welcome">Welcome to Chat Bop.<br></span>
+      <span class="pleaseSignIn">Please sign in on the top right to get started.</span>
+    </div>
+  {{/if}}
+</body>
+
+
+
+
+<template name="chatListColumn">
+  <div class="chatListTitle">
+    <button id="chatListButton" class="addNewChat" title="Add New Chat">+</button>
+      CHAT LIST
+    <button id="chatListButton" class="removeChat" title="Remove Chat">−</button>
+    {{#if addNewChatToggled}}
+      <div class="addNewChatBox">
+        <h1> ADD NEW CHAT </h1>
+        Send a chat request to another user by entering their username below. You will be able to chat with your requested Chat Bopper after they accept the request. Have fun bopping!
+        <form class="newChatInput">
+          <input type="text" name="text" placeholder="Enter a username." />
+        </form>
+        {{addRemoveAlert}}
+      </div>
+    {{/if}}
+    {{#if removeChatToggled}}
+      <div class="removeChatBox">
+        <h1> REMOVE CHAT </h1>
+        Remove a chat or chat request from your chat list by entering the offending username below. The removed user will not know they have been removed, and your username will still be present in their chat list as normal. Add a removed chat back with ADD NEW CHAT. Adding a user who still has you accepted on their chat list will reopen the chat as if nothing happened. Adding back a user whose request you removed will allow you to see the request again.
+        <form class="removeChatInput">
+          <input type="text" name="text" placeholder="Enter a username. >:(" />
+        </form>
+        {{addRemoveAlert}}
+      </div>
+    {{/if}}
+  </div>
+  <div class="namesList" style={{nameListHeight}}>
+    <ul>
+      {{#each myRequests}}
+        {{#if received}}
+          <li class="myRequestText">
+            <button class="addRequestButton" title="Accept Request">+</button>
+            Request from: {{friendname}}
+          </li>
+        {{else}}
+          <li class="sentRequestText">Sent request to: {{friendname}}</li>
+        {{/if}}
+      {{/each}}
+      {{#each myChats}}
+        <li class="myChatText" style={{currentChatListStyle}}>{{friendname}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+
+<template name="chatLog">
+  <ul>
+    {{#each myMessages}}
+      {{> chatMessage}}
+    {{/each}}
+  </ul>
+</template>
+  
+<template name="inputArea">
+  <button class="scrollToBottomButton">{{scrollToBottomButtonText}}</button>
+  <form class="newMessage">
+    <textarea class="textarea" name="textarea" placeholder="Say something."></textarea>
+    <button class="sendButton">SEND</button>
+  </form>
+</template>
+
+<template name="chatMessage">
+  <li class="chatMessage">
+    <div class="messageUserBlock" style="color:{{messageUserColor}}"><span class="messageUserText" tooltipText={{messageDate}}>{{from}}: </span></div>
+    <div class="messageText">{{text}}</div>
+  </li>
+</template>
