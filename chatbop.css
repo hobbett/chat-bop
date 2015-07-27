@@ -1,14 +1,10 @@
 body {
   font-family: verdana;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
   width: 70%;
-  height: 100%;
   position: relative;
 }
 
@@ -22,7 +18,7 @@ h1 {
 .welcomeText {
   font-family: Oswald;
   text-align: center;
-  margin-top: 30vh;
+  margin-top: 32vh;
 }
 
 .welcome {
@@ -30,7 +26,7 @@ h1 {
 }
 
 .pleaseSignIn {
-  color: #666666;
+  color: #545454;
   font-size: 25px;
 }
 
@@ -40,8 +36,10 @@ h1 {
   background-color: #FFF;
   font-size: 25px;
   width: 100%;
-  height: 50px;
   border-bottom: #eee solid 1px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 40px;
 }
 
 .pageTitle {
@@ -49,7 +47,7 @@ h1 {
 }
 
 .login {
-  color: #646464;
+  color: #545454;
   font-family: Oswald;
   float: right;
   display: inline-block;
@@ -57,16 +55,16 @@ h1 {
 .chatListColumn {
   width: 280px;
   float: left;
-  color: #646464;
+  color: #545454;
   position: absolute;
   z-index: 10;
-  border-bottom: #eee solid 1px;
   height: calc(100vh - 180px);
 }
 
 .namesList {
   height: 100%;
   overflow-y: hidden;
+  border-bottom: #eee solid 1px;
 }
 
 .namesList:hover {
@@ -77,7 +75,7 @@ h1 {
   font-family: Oswald, sans-serif;
   font-size: 20px;
   text-align: center;
-  color: #646464;
+  color: #545454;
   border-bottom: #eee solid 1px;
   position: relative;
 }
@@ -96,12 +94,17 @@ h1 {
   font-size: 20px;
   height: 30px;
   width: 30px;
-  color: #646464;
+  color: #545454;
+  background-color: #FFF;
 }
 
 #chatListButton:hover {
   color: #000;
   background-color: #eee;
+}
+
+#chatListButton:focus {
+  outline: none;
 }
 
 .addNewChatBox, .removeChatBox {
@@ -118,7 +121,7 @@ h1 {
 }
 
 .removeChatBox {
-  background-color: #646464;
+  background-color: #545454;
 
 }
 
@@ -133,6 +136,10 @@ h1 {
   padding: 15px;
   word-wrap: break-word;
   font-size: 13px;
+}
+
+#isOnline {
+  color: #396;
 }
 
 .myRequestText, .sentRequestText {
@@ -150,7 +157,6 @@ h1 {
   font-weight: bold;
   padding-left: 4px;
   margin-top: -.5px;
-
 }
 
 .addRequestButton:hover {
@@ -158,8 +164,14 @@ h1 {
   background-color: #396;
 }
 
+.usernameInput {
+  font-family: verdana;
+  outline: none;
+  border: none;
+  font-size: 13px;
+}
+
 .myChatText:hover, .myRequestText:hover {
-  color: #000;
   background-color: #eee;
 }
 
@@ -170,9 +182,9 @@ h1 {
 }
 
 .loginGreeting {
-  width: 75%;
-  margin-left: 25%;
-  margin-top: 30vh;
+  width: calc(100% - 285px);
+  margin-left: 285px;
+  margin-top: 32vh;
   font-family: Oswald;
   text-align: center;
   line-height: 20px;
@@ -184,7 +196,8 @@ h1 {
 
 .belowHiText {
   font-size: 20px;
-  color: #646464;
+  color: #545454;
+  line-height: 0px;
 }
 
 .chatLog {
@@ -201,12 +214,27 @@ ul {
   background: #FFF;
 }
 
+.moreMessages, .noMoreMessages {
+  font-size: 13px;
+  color: #545454;
+  margin-left: 280px;
+  border: none;
+  background: none;
+  font-family: verdana;
+  padding: 3px;
+}
+
+.moreMessages:hover {
+  text-decoration: underline;
+  color: #396;
+}
+
 .chatMessage {
   font-size: 13px;
   padding: 5px;
-  padding-left: 285px;
+  margin-left: 280px;
+  list-style: none;
 }
-
 
 .messageUserBlock {
   vertical-align: top;
@@ -215,14 +243,14 @@ ul {
   position: relative;
 }
 
-.messageUserText:hover:after {
+.messageUserText:hover:before {
   content: attr(tooltipText);
   position: absolute;
-  text-align: right;
   padding: 3px 7px 3px 7px;
+  margin-right: 5px;
   background-color: #000;
   color: #FFF;
-  right: 112%;
+  right: 100%;
   top: -3.5px;
   z-index: 100;
 }
@@ -254,6 +282,7 @@ ul {
   width: 160px;
   height: 25px;  
   color: #FFF;
+  font-family: verdana;
 }  
 
 .scrollToBottomButton:hover {
@@ -261,7 +290,7 @@ ul {
 }
 
 .scrollToBottomButton:active {
-  font-size: 11px;
+  font-size: 11.5px;
 }
 
 .textarea {
@@ -277,6 +306,17 @@ ul {
   font-family: Verdana, sans-serif;
 }
 
+.textarea:focus {
+  outline: none;
+}
+
+.submitOnEnter {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+  position: relative;
+}
+
 .sendButton {
   float: right;
   font-family: Oswald, sans-serif;
@@ -289,6 +329,7 @@ ul {
   height: 40px;
 }
 
+
 .sendButton:hover, .scrollToBottomButton:hover {
   background-color: #3FB579;
 }
@@ -297,6 +338,58 @@ ul {
   font-size: 20px;
 }
 
+.footer {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: calc(100vh - 30px);
+  text-align: center;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer:hover {
+  color: #545454;
+}
+
 button::-moz-focus-inner {
   border: 0;
+}
+
+/* For tablets and half screen */
+@media screen and (max-width: 1024px) {
+  body {
+    width: 90%;
+  }
+
+  .chatListColumn {
+    width: 200px;
+  }
+
+  .loginGreeting {
+    width: calc(100% - 200px);
+    margin-left: 200px;
+  }
+
+  .hiUsername {
+    font-size: 30px;
+  }
+
+  .belowHiText {
+    font-size: 15px;
+  }
+
+  .chatMessage {
+    margin-left: 200px;
+  }
+
+  .inputArea {
+    margin-left: 200px;
+  }
+
+  .moreMessages, .noMoreMessages {
+    margin-left: 200px;
+  }
 }
