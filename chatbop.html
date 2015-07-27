@@ -1,7 +1,6 @@
 <head>
-  <title>Chat Bop</title>
   <link href='http://fonts.googleapis.com/css?family=Oswald|Roboto+Slab' rel='stylesheet' type='text/css'>
-  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+  <link rel="icon" type="image/png" size="16x16 32x32" href="icon.png?v=2" />
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script>
@@ -13,10 +12,10 @@
 
 <body>
   <div class="header">
+    <div class="login">{{> loginButtons align="right"}}</div>
     {{#if currentUser}}
       <div class="pageTitle" title="The Best Chat Site on the Web">CHAT BOP</div>
     {{/if}}
-    <div class="login">{{> loginButtons align="right"}}</div>
   </div>
   {{#if currentUser}}
     <div class="chatListColumn">
@@ -46,8 +45,6 @@
 </body>
 
 
-
-
 <template name="chatListColumn">
   <div class="chatListTitle">
     <button id="chatListButton" class="addNewChat" title="Add New Chat">+</button>
@@ -58,19 +55,17 @@
         <h1> ADD NEW CHAT </h1>
         Send a chat request to another user by entering their username below. You will be able to chat with your requested Chat Bopper after they accept the request. Have fun bopping!
         <form class="newChatInput">
-          <input type="text" name="text" placeholder="Enter a username." />
+          {{> usernameInput}}
         </form>
-        {{addRemoveAlert}}
       </div>
     {{/if}}
     {{#if removeChatToggled}}
       <div class="removeChatBox">
         <h1> REMOVE CHAT </h1>
-        Remove a chat or chat request from your chat list by entering the offending username below. The removed user will not know they have been removed, and your username will still be present in their chat list as normal. Add a removed chat back with ADD NEW CHAT. Adding a user who still has you accepted on their chat list will reopen the chat as if nothing happened. Adding back a user whose request you removed will allow you to see the request again.
+        Remove a chat or chat request by entering the offending username below. Removing a user will remove their username from your chat list and yours from theirs, and you will not see chat requests from them until you add them back.
         <form class="removeChatInput">
-          <input type="text" name="text" placeholder="Enter a username. >:(" />
+          {{> usernameInput}}
         </form>
-        {{addRemoveAlert}}
       </div>
     {{/if}}
   </div>
@@ -87,15 +82,23 @@
         {{/if}}
       {{/each}}
       {{#each myChats}}
-        <li class="myChatText" style={{currentChatListStyle}}>{{friendname}}</li>
+        {{#if isOnline}}
+          <li class="myChatText" id="isOnline" style={{currentChatListStyle}} title="online">{{newMessageCountText}}{{friendname}}</li>
+        {{else}}
+          <li class="myChatText" style={{currentChatListStyle}} title="offline">{{newMessageCountText}}{{friendname}}</li>
+        {{/if}}
       {{/each}}
     </ul>
   </div>
 </template>
 
-
 <template name="chatLog">
   <ul>
+    {{#if moreMessages}}
+      <button class="moreMessages">—Load more messages—</button>
+    {{else}}
+      <div class="noMoreMessages">—No previous messages—</div>
+    {{/if}}
     {{#each myMessages}}
       {{> chatMessage}}
     {{/each}}
@@ -103,10 +106,13 @@
 </template>
   
 <template name="inputArea">
-  <button class="scrollToBottomButton">{{scrollToBottomButtonText}}</button>
+  {{#if notAtBottom}}
+    <button class="scrollToBottomButton">{{scrollToBottomButtonText}}</button>
+  {{/if}}
   <form class="newMessage">
     <textarea class="textarea" name="textarea" placeholder="Say something."></textarea>
     <button class="sendButton">SEND</button>
+    <input type="checkbox" class="submitOnEnter" title="Don't send when pressing Enter"/>
   </form>
 </template>
 
@@ -115,4 +121,8 @@
     <div class="messageUserBlock" style="color:{{messageUserColor}}"><span class="messageUserText" tooltipText={{messageDate}}>{{from}}: </span></div>
     <div class="messageText">{{text}}</div>
   </li>
+</template>
+
+<template name="usernameInput">
+  <input class="usernameInput" type="text" name="text" placeholder="Enter a username." size=18/>
 </template>
