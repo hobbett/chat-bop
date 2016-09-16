@@ -1,0 +1,395 @@
+body {
+  font-family: verdana;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 70%;
+  position: relative;
+}
+
+h1 {
+  font-family: Oswald;
+  font-weight: normal;
+  line-height: 5px;
+  font-size: 20px;
+}
+
+.welcomeText {
+  font-family: Oswald;
+  text-align: center;
+  margin-top: 32vh;
+}
+
+.welcome {
+  font-size: 40px;
+}
+
+.pleaseSignIn {
+  color: #545454;
+  font-size: 25px;
+}
+
+.header {
+  font-family: Oswald, sans-serif;
+  font-weight: 400;
+  background-color: #FFF;
+  font-size: 25px;
+  width: 100%;
+  border-bottom: #eee solid 1px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 40px;
+}
+
+.pageTitle {
+  display: inline-block;
+}
+
+.login {
+  color: #545454;
+  font-family: Oswald;
+  float: right;
+  display: inline-block;
+}
+.chatListColumn {
+  width: 280px;
+  float: left;
+  color: #545454;
+  position: absolute;
+  z-index: 10;
+  height: calc(100vh - 180px);
+}
+
+.namesList {
+  height: 100%;
+  overflow-y: hidden;
+  border-bottom: #eee solid 1px;
+}
+
+.namesList:hover {
+  overflow-y: scroll;
+}
+
+.chatListTitle {
+  font-family: Oswald, sans-serif;
+  font-size: 20px;
+  text-align: center;
+  color: #545454;
+  border-bottom: #eee solid 1px;
+  position: relative;
+}
+
+.addNewChat {
+  float: left;
+}
+
+.removeChat {
+  float: right;
+}
+
+#chatListButton {
+  border: none;
+  font-family: Verdana;
+  font-size: 20px;
+  height: 30px;
+  width: 30px;
+  color: #545454;
+  background-color: #FFF;
+}
+
+#chatListButton:hover {
+  color: #000;
+  background-color: #eee;
+}
+
+#chatListButton:focus {
+  outline: none;
+}
+
+.addNewChatBox, .removeChatBox {
+  font-family: Verdana, sans-serif;
+  color: #FFF;
+  font-size: 13px;
+  padding: 10px;
+  text-align: left;
+  z-index: 10;
+}
+
+.addNewChatBox {
+  background-color: #396;
+}
+
+.removeChatBox {
+  background-color: #545454;
+
+}
+
+.newChatInput, .removeChatInput {
+  margin-top: 10px;
+  width: 50%;
+}
+
+.myChatText, .myRequestText, .sentRequestText {
+  position: relative;
+  list-style: none;
+  padding: 15px;
+  word-wrap: break-word;
+  font-size: 13px;
+}
+
+#isOnline {
+  color: #396;
+}
+
+.myRequestText, .sentRequestText {
+  font-style: italic;
+}
+
+.addRequestButton {
+  color: #396;
+  border: none;
+  font-size: 13px;
+  background: none;
+  font-family: Verdana;
+  height: 20px;
+  width: 20px;
+  font-weight: bold;
+  padding-left: 4px;
+  margin-top: -.5px;
+}
+
+.addRequestButton:hover {
+  color: #FFF;
+  background-color: #396;
+}
+
+.usernameInput {
+  font-family: verdana;
+  outline: none;
+  border: none;
+  font-size: 13px;
+}
+
+.myChatText:hover, .myRequestText:hover {
+  background-color: #eee;
+}
+
+.mainColumn {
+  display: inline-block;
+  width: 100%;
+  position: absolute;
+}
+
+.loginGreeting {
+  width: calc(100% - 285px);
+  margin-left: 285px;
+  margin-top: 32vh;
+  font-family: Oswald;
+  text-align: center;
+  line-height: 20px;
+}
+
+.hiUsername {
+  font-size: 30px;
+}
+
+.belowHiText {
+  font-size: 20px;
+  color: #545454;
+  line-height: 0px;
+}
+
+.chatLog {
+  height: calc(100vh - 280px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  z-index: -1
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  background: #FFF;
+}
+
+.moreMessages, .noMoreMessages {
+  font-size: 13px;
+  color: #545454;
+  margin-left: 280px;
+  border: none;
+  background: none;
+  font-family: verdana;
+  padding: 3px;
+}
+
+.moreMessages:hover {
+  text-decoration: underline;
+  color: #396;
+}
+
+.chatMessage {
+  font-size: 13px;
+  padding: 5px;
+  margin-left: 280px;
+  list-style: none;
+}
+
+.messageUserBlock {
+  vertical-align: top;
+  display: table-cell;
+  white-space: pre;
+  position: relative;
+}
+
+.messageUserText:hover:before {
+  content: attr(tooltipText);
+  position: absolute;
+  padding: 3px 7px 3px 7px;
+  margin-right: 5px;
+  background-color: #000;
+  color: #FFF;
+  right: 100%;
+  top: -3.5px;
+  z-index: 100;
+}
+
+.messageText {
+  display: table-cell;
+  position: relative;
+  list-style: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.inputArea {
+  border-top: #eee solid 1px;
+  margin-left: 280px;
+  width: auto;
+  position: relative;
+}
+
+.scrollToBottomButton {
+  display: inline;
+  text-align: center;
+  background-color: #396;
+  border: none;
+  font-size: 13px;
+  position: absolute;
+  top: -32px;
+  left: calc(50% - 80px);
+  width: 160px;
+  height: 25px;  
+  color: #FFF;
+  font-family: verdana;
+}  
+
+.scrollToBottomButton:hover {
+  background: #3FB579;
+}
+
+.scrollToBottomButton:active {
+  font-size: 11.5px;
+}
+
+.textarea {
+  resize: none;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #000;
+  padding: 11px;
+  box-sizing: border-box;
+  border: #ccc solid 3px;
+  height: 120px;
+  font-family: Verdana, sans-serif;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.submitOnEnter {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+  position: relative;
+}
+
+.sendButton {
+  float: right;
+  font-family: Oswald, sans-serif;
+  margin-top: 10px;
+  border: none;
+  color: #FFF;
+  background-color: #396;
+  font-size: 25px;
+  width: 150px;
+  height: 40px;
+}
+
+
+.sendButton:hover, .scrollToBottomButton:hover {
+  background-color: #3FB579;
+}
+
+.sendButton:active {
+  font-size: 20px;
+}
+
+.footer {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: calc(100vh - 30px);
+  text-align: center;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer:hover {
+  color: #545454;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+/* For tablets and half screen */
+@media screen and (max-width: 1024px) {
+  body {
+    width: 90%;
+  }
+
+  .chatListColumn {
+    width: 200px;
+  }
+
+  .loginGreeting {
+    width: calc(100% - 200px);
+    margin-left: 200px;
+  }
+
+  .hiUsername {
+    font-size: 30px;
+  }
+
+  .belowHiText {
+    font-size: 15px;
+  }
+
+  .chatMessage {
+    margin-left: 200px;
+  }
+
+  .inputArea {
+    margin-left: 200px;
+  }
+
+  .moreMessages, .noMoreMessages {
+    margin-left: 200px;
+  }
+}
